@@ -3,4 +3,5 @@
 .idea
 *.swp
 exports
+out
 mj_pref.json
