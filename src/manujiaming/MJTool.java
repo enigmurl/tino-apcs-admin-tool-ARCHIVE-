@@ -101,7 +101,7 @@ public class MJTool extends Application {
         StackPane titleHolder = new StackPane(title);
         lineHolder.setAlignment(Pos.CENTER);
         titleHolder.setAlignment(Pos.CENTER);
-        VBox.setMargin(lineHolder, new Insets(0, 0, 10, 0));
+        VBox.setMargin(lineHolder, new Insets(0, 0, 40, 0));
 
 
         HBox main = new HBox();
