@@ -5,3 +5,5 @@
 exports
 out
 mj_pref.json
+gatChooserPrefs
+*.iml
