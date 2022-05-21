@@ -1,0 +1,6 @@
+.ds_store
+.DS_store
+.idea
+*.swp
+exports
+mj_pref.json
