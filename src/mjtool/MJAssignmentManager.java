@@ -1,4 +1,4 @@
-package manujiaming;
+package mjtool;
 
 import com.google.gson.JsonObject;
 

@@ -1,4 +1,4 @@
-package manujiaming.ui;
+package mjtool.ui;
 
 import javafx.scene.control.ComboBox;
 

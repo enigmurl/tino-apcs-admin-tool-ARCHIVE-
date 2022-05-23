@@ -1,25 +1,15 @@
-package manujiaming.ui;
+package mjtool.ui;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.control.CheckBox;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import manujiaming.MJAssignmentManager;
-import manujiaming.MJStudent;
-import manujiaming.MJSubmission;
-import manujiaming.MJTool;
+import mjtool.MJStudent;
+import mjtool.MJSubmission;
+import mjtool.MJTool;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MJTableEntry extends VBox {
 

@@ -1,4 +1,4 @@
-package manujiaming;
+package mjtool;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -11,12 +11,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.ConnectException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 public class MJFileDownloader {

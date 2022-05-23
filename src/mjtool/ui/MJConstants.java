@@ -1,4 +1,4 @@
-package manujiaming.ui;
+package mjtool.ui;
 
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;

@@ -1,11 +1,9 @@
-package manujiaming;
+package mjtool;
 
-import manujiaming.ui.MJConstants;
+import mjtool.ui.MJConstants;
 
 import java.time.*;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
-import java.util.Date;
 import java.util.List;
 
 public class MJSubmission implements Comparable<MJSubmission> {

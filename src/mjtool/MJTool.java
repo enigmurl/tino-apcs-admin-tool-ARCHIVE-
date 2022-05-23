@@ -1,32 +1,20 @@
-package manujiaming;
+package mjtool;
 
-import com.google.gson.JsonObject;
-import com.sun.xml.internal.ws.util.xml.CDATA;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import manujiaming.ui.*;
+import mjtool.ui.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +25,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
- * @author Manu Bhat
+ * @author Manu Bhat, with the APCS website primarily being written by Jiaming Liu
  */
 public class MJTool extends Application {
 

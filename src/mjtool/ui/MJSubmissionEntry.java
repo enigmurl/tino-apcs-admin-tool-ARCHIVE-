@@ -1,4 +1,4 @@
-package manujiaming.ui;
+package mjtool.ui;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -7,19 +7,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import manujiaming.MJAssignmentManager;
-import manujiaming.MJSubmission;
-import manujiaming.MJStudent;
-import manujiaming.MJTool;
+import mjtool.MJSubmission;
+import mjtool.MJTool;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Locale;
 
 
 public class MJSubmissionEntry extends VBox {

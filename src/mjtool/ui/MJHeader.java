@@ -1,4 +1,4 @@
-package manujiaming.ui;
+package mjtool.ui;
 
 import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;
@@ -10,10 +10,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import manujiaming.MJSubmission;
-import manujiaming.MJTool;
-
-import javax.security.sasl.SaslServer;
 
 public class MJHeader extends VBox {
 
