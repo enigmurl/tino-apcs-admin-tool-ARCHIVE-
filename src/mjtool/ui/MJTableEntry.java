@@ -47,8 +47,9 @@ public class MJTableEntry extends VBox {
     private MJLabel comments;
     private boolean expandedSubmissions;
 
+    private MJButton b;
     private HBox getMain(MJStudent student, int count) {
-        MJButton b = new MJButton("Subs " + count);
+        b = new MJButton("Subs " + count);
         b.setMinWidth(80);
         b.setMaxWidth(80);
 
@@ -64,22 +65,35 @@ public class MJTableEntry extends VBox {
         b.setOnMousePressed(event -> {
             //toggle subchain
             if (expandedSubmissions) {
-                b.setBackground(MJConstants.DEFAULT_BACKGROUND);
-                this.getChildren().remove(2, this.getChildren().size());
+                this.contract();
             } else {
-                b.setBackground(MJConstants.YELLOW_BACKGROUND);
-                this.getChildren().add(2, subHeader);
-                for (int i = 0; i < subEntries.size(); i++) {
-                    this.getChildren().add(3 + i, this.subEntries.get(i));
-                }
+                this.expand();
             }
-
-            expandedSubmissions = !expandedSubmissions;
         });
 
         HBox.setMargin(b, new Insets(2,10,2,10));
         HBox.setMargin(name, new Insets(2,10,2,10));
         HBox.setMargin(comments, new Insets(2,40,2,0));
         return new HBox(b, name, comments);
+    }
+
+    public void expand() {
+        if (expandedSubmissions) return;
+
+        b.setBackground(MJConstants.YELLOW_BACKGROUND);
+        this.getChildren().add(2, subHeader);
+        for (int i = 0; i < subEntries.size(); i++) {
+            this.getChildren().add(3 + i, this.subEntries.get(i));
+        }
+
+        expandedSubmissions = true;
+    }
+    public void contract() {
+        if (!expandedSubmissions) return;
+
+        b.setBackground(MJConstants.DEFAULT_BACKGROUND);
+        this.getChildren().remove(2, this.getChildren().size());
+
+        expandedSubmissions = false;
     }
 }

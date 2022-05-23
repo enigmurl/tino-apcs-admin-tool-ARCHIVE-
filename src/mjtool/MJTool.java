@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -340,10 +341,23 @@ public class MJTool extends Application {
         MJLabel ml = new MJLabel("Viewing Mode");
 
         MJButton copyButton = new MJButton("Copy spreadsheet data");
+        MJButton expandButton = new MJButton("Expand All");
+        MJButton contractButton = new MJButton("Contract All");
+
+
         Line separator = new Line(0, 0, 0, 20);
         separator.setStroke(Color.WHITE);
 
-        HBox hb = new HBox(10, ml, viewingMode,separator,copyButton);
+
+
+        Line separator1 = new Line(0, 0, 0, 20);
+        separator1.setStroke(Color.WHITE);
+
+        Line separator2 = new Line(0, 0, 0, 20);
+        separator2.setStroke(Color.WHITE);
+
+
+        HBox hb = new HBox(10, ml, viewingMode,separator,copyButton, separator1, expandButton, separator2, contractButton);
         hb.setAlignment(Pos.CENTER);
 
         downloadPB = new ProgressBar(0);
@@ -410,6 +424,22 @@ public class MJTool extends Application {
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             clipboard.setContents(stringSelection, null);
         }));
+
+        expandButton.setOnMouseClicked(event -> {
+            for (Node child : userVbox.getChildren()) {
+                if (child instanceof MJTableEntry) {
+                    ((MJTableEntry) child).expand();
+                }
+            }
+        });
+
+        contractButton.setOnMouseClicked(event -> {
+            for (Node child : userVbox.getChildren()) {
+                if (child instanceof MJTableEntry) {
+                    ((MJTableEntry) child).contract();
+                }
+            }
+        });
     }
 
     public File getExportURL() {
