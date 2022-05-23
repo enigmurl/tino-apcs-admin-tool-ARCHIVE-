@@ -41,7 +41,7 @@ public class MJAssignmentManager {
         JsonObject jsonAssignments = this.fd.queryAssignmentMetaData();
         for (String key : jsonAssignments.keySet()) {
             String path = jsonAssignments.get(key).getAsString();
-
+            path = path.substring(0, path.length() - ".md".length());
             Assignment a = new Assignment(key, path);
 
             assignments.add(a);

@@ -31,7 +31,7 @@ import java.util.ArrayList;
  */
 public class MJTool extends Application {
 
-    private static final String API_URL = "http://localhost:8000/";
+    private static final String API_URL = "http://localhost:8000";
     private static final String API_KEY = "happysparkyadmin12138";
 
     public static void main(String[] args) {
