@@ -1,3 +1,4 @@
+package jotformtool;
 
 public class Student implements Comparable<Student>{
 	private String firstName;

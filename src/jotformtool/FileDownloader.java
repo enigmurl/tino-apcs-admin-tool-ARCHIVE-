@@ -1,3 +1,5 @@
+package jotformtool;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -94,8 +96,12 @@ public class FileDownloader {
 		try (Scanner scanner = new Scanner(new File("urls.txt"));) {
 			while (scanner.hasNextLine()) {
 				String line = scanner.nextLine();
-				String[] urls = line.split("[|]");
-				for (String url : urls) {
+				String[] urls;
+				if (line.contains("|")) {
+					urls = line.split("[|]");
+				} else {
+					urls = line.split("[\n]");
+				}				for (String url : urls) {
 					url = url.trim();
 					if (url.startsWith("http")) {
 						// if there is no "/" this can't possibly be a valid url so OOB crash is ok

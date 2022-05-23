@@ -1,3 +1,5 @@
+package jotformtool;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -20,7 +22,7 @@ public class SubmissionsDatabase {
 	private String startDate;
 	private String endDate;
 	
-	/* These header variables are used to link headers with Submission fields.
+	/* These header variables are used to link headers with jotformtool.Submission fields.
 	 * For each of these header variables, we will look for a header cell matching
 	 * or containing the string and store the index of that header in the
 	 * headerMap with a key matching the header variable.
@@ -190,7 +192,7 @@ public class SubmissionsDatabase {
 	}
 	
 	public List<String[]> getSubmissionsTable(Roster roster, String dueDate, SubmissionsDatabase lateSubmissionsDb) {
-		// Submission Date	First Name	Last Name	Period	E-mail	Any comments?	Did you name your zip file properly?  Ex: P3_Wang_Michael_Centipede.zip	Name your project folder PX_LastName_FirstName_Centipede. Then right click and Send To -> Compressed (zipped) folder. In a mac compressing is similar, using a right click, but has a slightly different option. Upload that file. You should end up with a zip file named PX_LastName_FirstName_Centipede.zip. For example if you were in 3rd period and named Michael Wang, then you would name the file P3_Wang_Michael_Centipede.zip
+		// jotformtool.Submission Date	First Name	Last Name	Period	E-mail	Any comments?	Did you name your zip file properly?  Ex: P3_Wang_Michael_Centipede.zip	Name your project folder PX_LastName_FirstName_Centipede. Then right click and Send To -> Compressed (zipped) folder. In a mac compressing is similar, using a right click, but has a slightly different option. Upload that file. You should end up with a zip file named PX_LastName_FirstName_Centipede.zip. For example if you were in 3rd period and named Michael Wang, then you would name the file P3_Wang_Michael_Centipede.zip
 		// Oldest Date, Newest Date, First Name, Last Name, Period, E-mail, Id, Oldest Comments, Newest Comments, Oldest Uploads, Newest Uploads, Score, Grader Comments
 		String oldestDateHeader = "Oldest Date";
 		String newestDateHeader = "Newest Date";
@@ -268,7 +270,7 @@ public class SubmissionsDatabase {
 				rowData[outHeaderMap.get(newestUploadsHeader)] = latestSub.getUpload();
 				
 				if (!latestSub.getPeriod().equals(stud.getPeriod())) {
-					graderComments.add("Submission period does not match roster period");
+					graderComments.add("jotformtool.Submission period does not match roster period");
 				}
 				
 				if (latestSub.getUpload().length() == 0) {

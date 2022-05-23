@@ -1,3 +1,5 @@
+package jotformtool;
+
 import java.util.Arrays;
 
 public class Submission implements Comparable<Submission> {

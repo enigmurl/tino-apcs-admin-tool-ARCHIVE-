@@ -85,7 +85,7 @@ public class MJTool extends Application {
 
         VBox root = new VBox();
 
-        MJLabel title = new MJLabel("APCS Submission Viewer", MJFontManager.serif);
+        MJLabel title = new MJLabel("APCS jotformtool.Submission Viewer", MJFontManager.serif);
         Line line = new Line(-200, 0, 200, 0);
         line.setStroke(Color.WHITE);
         StackPane lineHolder = new StackPane(line);
@@ -111,7 +111,7 @@ public class MJTool extends Application {
         for (MJRosterLoader.Roster r : rosters) {
             rosterChoice.getItems().add(r.getRosterName());
         }
-        MJLabel rosterHeader = new MJLabel("Select Roster", MJFontManager.sansSerif);
+        MJLabel rosterHeader = new MJLabel("Select jotformtool.Roster", MJFontManager.sansSerif);
 
 
         VBox generalConfig = new VBox(configLabel, exportGroup, rosterChoice, rosterHeader);
@@ -355,14 +355,14 @@ public class MJTool extends Application {
 
         VBox main = new VBox();
 
-        MJLabel title = new MJLabel("APCS Submission Viewer", MJFontManager.serif);
+        MJLabel title = new MJLabel("APCS jotformtool.Submission Viewer", MJFontManager.serif);
         Line line = new Line(-200, 0, 200, 0);
         line.setStroke(Color.WHITE);
         StackPane lineHolder = new StackPane(line);
         StackPane titleHolder = new StackPane(title);
 
         MJComboBox<String> viewingMode = new MJComboBox<>();
-        viewingMode.getItems().addAll("Student", "Date");
+        viewingMode.getItems().addAll("jotformtool.Student", "Date");
         viewingMode.getSelectionModel().selectFirst();
 
         MJLabel ml = new MJLabel("Viewing Mode");
@@ -432,7 +432,7 @@ public class MJTool extends Application {
         bgHolder.getChildren().addAll(bg, main);
 
         viewingMode.setOnAction(event -> {
-            if (viewingMode.getValue().equals("Student")) {
+            if (viewingMode.getValue().equals("jotformtool.Student")) {
                 switchToUser();
             } else {
                 switchToDate();
@@ -529,7 +529,7 @@ public class MJTool extends Application {
     }
 
     private void launchStage() {
-        this.stage.setTitle("APCS Submission Recorder");
+        this.stage.setTitle("APCS jotformtool.Submission Recorder");
         this.stage.setScene(this.landing);
         this.stage.show();
         this.stage.centerOnScreen();

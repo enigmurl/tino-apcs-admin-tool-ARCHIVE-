@@ -1,3 +1,5 @@
+package jotformtool;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.BufferedInputStream;
@@ -7,7 +9,6 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -36,7 +37,6 @@ import com.google.gson.JsonSyntaxException;
 import com.opencsv.exceptions.CsvException;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -92,7 +92,7 @@ public class SubmissionRecorder extends Application {
 	private static final String ROSTERS_DIR = "rosters";
 
 	// Expected column titles in the CSV file
-	private static final String SUBMISSION_DATE_HEADER = "Submission Date";
+	private static final String SUBMISSION_DATE_HEADER = "jotformtool.Submission Date";
 	private static final String SUBMISSION_FIRST_NAME_HEADER = "First Name";
 	private static final String SUBMISSION_LAST_NAME_HEADER = "Last Name";
 	private static final String SUBMISSION_PERIOD_HEADER = "Period";
@@ -202,7 +202,7 @@ public class SubmissionRecorder extends Application {
 //		lateHeadersRow.getChildren().add(new VBox(new Label("Comments"), lateCommentsHeaderField));
 //		lateHeadersRow.getChildren().add(new VBox(new Label("Form ID"), lateFormIdHeaderField));
 
-		// Submission recorder scene
+		// jotformtool.Submission recorder scene
 		HBox hbox = new HBox(20);
 		hbox.setStyle("-fx-padding: 10;");
 
@@ -264,7 +264,7 @@ public class SubmissionRecorder extends Application {
 		GridPane.setHalignment(checkInlabel2, HPos.LEFT);
 		gridPane.add(endDatePicker, 1, 1);
 
-		vbox.getChildren().add(new Label("Submission window:"));
+		vbox.getChildren().add(new Label("jotformtool.Submission window:"));
 		//        hbox.getChildren().add(gridPane);
 		hbox.getChildren().addAll(checkInlabel, startDatePicker, checkInlabel2, endDatePicker);
 		vbox.getChildren().add(hbox);

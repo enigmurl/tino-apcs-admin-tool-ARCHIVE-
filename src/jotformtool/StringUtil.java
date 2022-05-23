@@ -1,4 +1,4 @@
-
+package jotformtool;
 
 import java.io.PrintStream;
 import java.text.ParseException;
@@ -19,7 +19,7 @@ public class StringUtil {
 //	public static void main(String[] args) {
 //		// testing addQuotes
 //		try {
-//			String quotes = addQuotesForCommaDelimitedString("Submission Date,First Name,Last Name,Period,\"\"\"E-mail\"\"\",Score,Any comments?,\"Did you name your zip, file properly?  Ex: P3_Wang_Michael_Centipede.zip\",Upload");
+//			String quotes = addQuotesForCommaDelimitedString("jotformtool.Submission Date,First Name,Last Name,Period,\"\"\"E-mail\"\"\",Score,Any comments?,\"Did you name your zip, file properly?  Ex: P3_Wang_Michael_Centipede.zip\",Upload");
 //			System.out.println(quotes);
 //		} catch (ParseException e) {
 //			// TODO Auto-generated catch block
