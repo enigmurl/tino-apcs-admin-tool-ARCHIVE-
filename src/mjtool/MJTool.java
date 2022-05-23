@@ -449,7 +449,7 @@ public class MJTool extends Application {
             }
 
             if (!student.getSubs().get(student.getSubs().size() - 1).isComplete()) {
-                comments = "(RE NEEDED): The latest submission was marked as incomplete";
+                comments += "(RE NEEDED): The latest submission was marked as incomplete";
             }
         }
 
