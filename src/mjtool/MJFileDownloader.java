@@ -30,7 +30,7 @@ public class MJFileDownloader {
         return "?key=" + this.apiEntry;
     }
 
-    private void ensureFolder(MJTool root) {
+    public void ensureFolder(MJTool root) {
         File output = new File(root.getExportURL().toString() +"/" + root.getActiveAssignment().getName());
         output.mkdir();
     }
@@ -102,13 +102,14 @@ public class MJFileDownloader {
         return ret.toString();
     }
 
-    public JsonObject queryAssignmentMetadata() {
-        String url = this.urlBase + "/assignments" + fullApiKeyEntry();
+    public JsonObject queryAssignmentMetaData() {
+        String url = this.urlBase + "/submissions/lab_metadata" + fullApiKeyEntry();
 
         String jsonString = downloadFile(url);
 
         return new JsonParser().parse(jsonString).getAsJsonObject();
     }
+
 
     private JsonArray queryAllMetaData() {
         String url = this.urlBase + "/submissions/metadata" + fullApiKeyEntry();

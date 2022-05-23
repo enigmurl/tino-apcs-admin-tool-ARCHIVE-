@@ -48,7 +48,7 @@ public class MJSubmissionEntry extends VBox {
         MJLabel lab = new MJLabel(sub.getStudent().getFirstName() + " " + sub.getStudent().getLastName() + " (Sub " + sub.getSubNum() + ")");
         lab.setPrefWidth(150);
 
-        boolean late = sub.isLateFor(a.getActiveAssignment());
+        boolean late = sub.isLateFor(a.getDueDate());
 
         LocalDateTime realTime =  sub.getSubmissionTime().plus(MJConstants.UTC_OFFSET.getTotalSeconds(), ChronoUnit.SECONDS);
         String realTimeString =  realTime.format(MJConstants.STD_FORMATTER);

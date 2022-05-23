@@ -36,8 +36,8 @@ public class MJSubmission implements Comparable<MJSubmission> {
         this.student.getSubs().add(this);
     }
 
-    public boolean isLateFor(MJAssignmentManager.Assignment a) {
-        return this.submissionTime.isAfter(a.getDueDate().atTime(LocalTime.of(23,59, 59)).plus(-MJConstants.UTC_OFFSET.getTotalSeconds(), ChronoUnit.SECONDS));
+    public boolean isLateFor(LocalDate a) {
+        return this.submissionTime.isAfter(a.atTime(LocalTime.of(23,59, 59)).plus(-MJConstants.UTC_OFFSET.getTotalSeconds(), ChronoUnit.SECONDS));
     }
 
     public List<String> getJavaFiles() {

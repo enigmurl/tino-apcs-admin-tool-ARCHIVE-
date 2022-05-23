@@ -22,6 +22,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.File;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -51,6 +52,7 @@ public class MJTool extends Application {
     private MJAssignmentManager.Assignment activeAssignmentObject;
     private MJRosterLoader.Roster activeRosterObject;
     private File exportURL;
+    private LocalDate dueDate;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -116,6 +118,8 @@ public class MJTool extends Application {
         generalConfig.setMaxWidth(400);
         generalConfig.setPrefWidth(400);
 
+
+
         VBox.setMargin(exportGroup, new Insets(20));
         VBox.setMargin(rosterHeader, new Insets(5));
 
@@ -124,19 +128,32 @@ public class MJTool extends Application {
         MJLabel assignmentLabel = new MJLabel("Assignment", MJFontManager.sansSerifBold);
 
         MJComboBox<String> assignments = new MJComboBox<>();
+        assignments.setPrefWidth(130);
 
         for (MJAssignmentManager.Assignment i : this.assignments) {
             assignments.getItems().add(i.getName());
         }
+
+        DatePicker datePicker = new DatePicker();
+        MJLabel dateHeader = new MJLabel("Due Date", MJFontManager.sansSerif);
+
+
         MJLabel labHeader = new MJLabel("Select Lab", MJFontManager.sansSerif);
 
         Button b = new MJButton("Download Submissions");
 
-        VBox currentAssignment = new VBox(assignmentLabel, assignments, labHeader, b);
+        VBox currentAssignment = new VBox(assignmentLabel, assignments, labHeader, datePicker, dateHeader, b);
+
+
+        datePicker.setPrefWidth(130);
+        datePicker.setBackground( new Background(new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(8,0,0,8, false), null)));
+        datePicker.getEditor().setBackground(MJConstants.DEFAULT_BACKGROUND);
+
 
 
         VBox.setMargin(assignments, new Insets(20,0,5,0));
-        VBox.setMargin(b, new Insets(20,0,5,0));
+        VBox.setMargin(b, new Insets(10,0,5,0));
+        VBox.setMargin(datePicker, new Insets(10,0,5,0));
 
 
         HBox.setHgrow(currentAssignment, Priority.ALWAYS);
@@ -151,10 +168,10 @@ public class MJTool extends Application {
 
         this.landing = new Scene(bgHolder);
 
-        this.loadLandingDefaults(rosterChoice, assignments, exportDir, updateExport, b);
+        this.loadLandingDefaults(rosterChoice, assignments, datePicker, exportDir, updateExport, b);
     }
 
-    private void loadLandingDefaults(MJComboBox<String> roster, MJComboBox<String> assignment, Label exportLabel, Button exportButton, Button downloadButton) {
+    private void loadLandingDefaults(MJComboBox<String> roster, MJComboBox<String> assignment, DatePicker date, Label exportLabel, Button exportButton, Button downloadButton) {
         String exportPath = pm.getKey(MJPreferenceManager.EXPORT_KEY);
         String rosterName = pm.getKey(MJPreferenceManager.ROSTER_KEY);
         String assignmentName = pm.getKey(MJPreferenceManager.ASSIGNMENT_KEY);
@@ -255,13 +272,22 @@ public class MJTool extends Application {
             System.out.println("Downloading ... ");
             this.download();
         });
+
+        date.valueProperty().addListener(((observable, oldValue, newValue) -> {
+            this.dueDate = newValue;
+        }));
     }
 
     private void download() {
-        if (this.activeAssignment == null || this.activeRoster == null || this.exportURL == null) {
+        System.out.println(this.activeAssignment);
+        System.out.println(this.activeRoster);
+        System.out.println(this.exportURL);
+        System.out.println(this.dueDate);
+
+        if (this.activeAssignment == null || this.activeRoster == null || this.exportURL == null || this.dueDate == null) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("Cannot download!");
-            a.setContentText("Please make sure the assignment, export path, and roster are all set!");
+            a.setContentText("Please make sure the assignment, due date, export path, and roster are all set!");
             a.show();
             return;
         }
@@ -290,6 +316,7 @@ public class MJTool extends Application {
                     this.fd.download(this, sub);
                 }
             }
+            this.fd.ensureFolder(this);
             this.fd.openDownloadsDirectory(this);
 
             this.applyComments();
@@ -442,18 +469,6 @@ public class MJTool extends Application {
         });
     }
 
-    public File getExportURL() {
-        return exportURL;
-    }
-
-    public MJAssignmentManager.Assignment getActiveAssignment() {
-        return activeAssignmentObject;
-    }
-
-    public MJFileDownloader getFd() {
-        return fd;
-    }
-
     private void applyComments() {
         for (MJStudent mjStudent : this.activeRosterObject.getUsers()) {
             this.handleSingleComment(mjStudent);
@@ -467,7 +482,7 @@ public class MJTool extends Application {
             String realTimeString =  LocalDateTime.now().toLocalDate().format(MJConstants.STD_FORMATTER);
             comments += "MISSING: as of " + realTimeString + "\n";
         } else {
-            if (student.getSubs().get(0).isLateFor(this.activeAssignmentObject)) {
+            if (student.getSubs().get(0).isLateFor(this.dueDate)) {
                 comments += "LATE: earliest submission was marked as late!\n";
             }
 
@@ -487,6 +502,22 @@ public class MJTool extends Application {
             student.setGeneratedComments(comments);
         }
         //apply other stuff
+    }
+
+    public File getExportURL() {
+        return exportURL;
+    }
+
+    public MJAssignmentManager.Assignment getActiveAssignment() {
+        return activeAssignmentObject;
+    }
+
+    public MJFileDownloader getFd() {
+        return fd;
+    }
+
+    public LocalDate getDueDate() {
+        return this.dueDate;
     }
 
     private void switchToUser() {

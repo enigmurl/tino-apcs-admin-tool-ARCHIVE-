@@ -18,11 +18,9 @@ public class MJAssignmentManager {
     public static class Assignment {
         private String name;
         private String lessonPath;
-        private LocalDate dueDate;
 
-        public Assignment(String name, LocalDate dueDate, String lessonPath) {
+        public Assignment(String name, String lessonPath) {
             this.name = name;
-            this.dueDate = dueDate;
             this.lessonPath = lessonPath;
         }
 
@@ -30,9 +28,6 @@ public class MJAssignmentManager {
             return name;
         }
 
-        public LocalDate getDueDate() {
-            return dueDate;
-        }
 
         public String getLessonPath() {
             return lessonPath;
@@ -43,15 +38,11 @@ public class MJAssignmentManager {
         ArrayList<Assignment> assignments = new ArrayList<>();
 
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd", Locale.ENGLISH);
-
-        JsonObject jsonAssignments = this.fd.queryAssignmentMetadata();
+        JsonObject jsonAssignments = this.fd.queryAssignmentMetaData();
         for (String key : jsonAssignments.keySet()) {
-            JsonObject subDict = jsonAssignments.get(key).getAsJsonObject();
-            String path = subDict.get("path").getAsString();
-            String date = subDict.get("date").getAsString();
+            String path = jsonAssignments.get(key).getAsString();
 
-            Assignment a = new Assignment(key, LocalDate.parse(date, formatter), path);
+            Assignment a = new Assignment(key, path);
 
             assignments.add(a);
         }
