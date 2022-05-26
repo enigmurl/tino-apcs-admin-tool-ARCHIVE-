@@ -264,7 +264,7 @@ public class SubmissionRecorder extends Application {
 		GridPane.setHalignment(checkInlabel2, HPos.LEFT);
 		gridPane.add(endDatePicker, 1, 1);
 
-		vbox.getChildren().add(new Label("jotformtool.Submission window:"));
+		vbox.getChildren().add(new Label("Submission window:"));
 		//        hbox.getChildren().add(gridPane);
 		hbox.getChildren().addAll(checkInlabel, startDatePicker, checkInlabel2, endDatePicker);
 		vbox.getChildren().add(hbox);

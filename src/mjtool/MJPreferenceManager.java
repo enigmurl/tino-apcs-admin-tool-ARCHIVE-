@@ -3,7 +3,6 @@ package mjtool;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.oracle.javafx.jmx.json.JSONException;
 
 import java.io.*;
 
@@ -32,7 +31,7 @@ public class MJPreferenceManager {
                 reader.close();
 
                 json = new JsonParser().parse(str.toString()).getAsJsonObject();
-            } catch (IOException | IllegalStateException | JSONException e) {
+            } catch (IOException | IllegalStateException e) {
                 throw new RuntimeException("Preferences unavailable");
             }
         } else {

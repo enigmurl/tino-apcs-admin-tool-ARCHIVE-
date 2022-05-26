@@ -270,7 +270,7 @@ public class SubmissionsDatabase {
 				rowData[outHeaderMap.get(newestUploadsHeader)] = latestSub.getUpload();
 				
 				if (!latestSub.getPeriod().equals(stud.getPeriod())) {
-					graderComments.add("jotformtool.Submission period does not match roster period");
+					graderComments.add("Submission period does not match roster period");
 				}
 				
 				if (latestSub.getUpload().length() == 0) {
