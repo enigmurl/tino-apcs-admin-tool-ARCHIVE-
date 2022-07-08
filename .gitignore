@@ -7,3 +7,6 @@ exports
 out
 mj_pref.json
 gatChooserPrefs
+
+#contains api key
+src/mjtool/MJ_API_KEY.java

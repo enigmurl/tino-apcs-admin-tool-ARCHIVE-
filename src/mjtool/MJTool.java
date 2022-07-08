@@ -16,6 +16,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import mjtool.ui.*;
+import mjtool.ui.MJConstants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,8 +32,8 @@ import java.util.ArrayList;
  */
 public class MJTool extends Application {
 
-    private static final String API_URL = "http://localhost:8000";
-    private static final String API_KEY = "happysparkyadmin12138";
+    private static final String API_URL = MJ_API_KEY.API_URL;
+    private static final String API_KEY = MJ_API_KEY.API_KEY;
 
     public static void main(String[] args) {
         launch(args);
